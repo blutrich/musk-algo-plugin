@@ -31,7 +31,7 @@
         "claude-code"
       ],
       "category": "developer-tools",
-      "source": "."
+      "source": "./plugins/musk-algo"
     }
   ]
 }
