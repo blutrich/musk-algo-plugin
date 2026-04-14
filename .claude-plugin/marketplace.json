@@ -1,0 +1,37 @@
+{
+  "name": "musk-algo",
+  "owner": {
+    "name": "Ofer Blutrich",
+    "url": "https://github.com/blutrich"
+  },
+  "metadata": {
+    "description": "Analyze any local repo through Musk's 5-Step Algorithm and Goldratt's Theory of Constraints. Finds bottlenecks, dead code, tracked artifacts, rename drift, and over-engineering - then produces a specific, actionable report with a Week 1-4 roadmap.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "musk-algo",
+      "description": "Adds the /musk-algo slash command. Point it at a local repo path and get a deep flow analysis: what to delete first, what the primary bottleneck is, concrete complexity red flags with before/after examples, and a prioritized roadmap.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Ofer Blutrich",
+        "url": "https://github.com/blutrich"
+      },
+      "homepage": "https://github.com/blutrich/musk-algo-plugin",
+      "repository": "https://github.com/blutrich/musk-algo-plugin",
+      "license": "MIT",
+      "keywords": [
+        "code-review",
+        "refactoring",
+        "bottleneck-analysis",
+        "theory-of-constraints",
+        "musk-algorithm",
+        "dead-code",
+        "technical-debt",
+        "claude-code"
+      ],
+      "category": "developer-tools",
+      "source": "."
+    }
+  ]
+}

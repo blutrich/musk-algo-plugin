@@ -1,0 +1,20 @@
+{
+  "name": "musk-algo",
+  "version": "0.1.0",
+  "description": "Analyze a local repo through Musk's 5-Step Algorithm and Goldratt's Theory of Constraints. Finds bottlenecks, dead code, tracked artifacts, rename drift, and over-engineering - produces a specific, actionable report with a Week 1-4 roadmap.",
+  "author": {
+    "name": "Ofer Blutrich",
+    "url": "https://github.com/blutrich"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/blutrich/musk-algo-plugin",
+  "repository": "https://github.com/blutrich/musk-algo-plugin",
+  "keywords": [
+    "code-review",
+    "refactoring",
+    "bottleneck-analysis",
+    "theory-of-constraints",
+    "musk-algorithm",
+    "claude-code"
+  ]
+}
