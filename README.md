@@ -64,103 +64,84 @@ Every recommendation references specific files, line numbers, or function names.
 
 ### The climbing gym phone call
 
-The idea for `/musk-algo` didn't come from a product meeting or a GitHub issue. It came from a late-night phone call at the climbing gym, between two friends — **[Isaac Zeevi](https://github.com/blutrich)** on one end, Ofer Blutrich on the other. The kind of call you take in the corner of the gym between burns, chalk still on your hands, where someone says "you know what would actually be useful…" and the idea lands hard enough that you walk out to your car and start building it.
+The idea for `/musk-algo` didn't come from a product meeting or a GitHub issue. It came from a late-night phone call at the climbing gym, between two friends - **Isaac Zeevi** on one end, Ofer on the other. The kind of call you take in the corner of the gym between burns, chalk still on your hands, where someone says "you know what would actually be useful..." and the idea lands hard enough that you walk out to your car and start building it.
 
 Isaac was the one who connected the dots. He'd been carrying around two frames for a while and couldn't stop seeing how they applied to code:
 
 - **Elon Musk's 5-Step Algorithm** from the Starship factory tour with Tim Dodd. *Make the requirements less dumb. Delete the part. Simplify or optimize. Accelerate cycle time. Automate.* In that order. The most important step is step 2. The second most important is step 1. Every engineer skips straight to step 3.
-- **Eli Goldratt's Theory of Constraints** from *The Goal* (1984). Any system has exactly one bottleneck at a time. Any improvement anywhere else is an illusion — it looks like progress on a report, but the end-to-end system runs at the speed of the constraint.
+- **Eli Goldratt's Theory of Constraints** from *The Goal* (1984). Any system has exactly one bottleneck at a time. Any improvement anywhere else is an illusion - it looks like progress on a report, but the end-to-end system runs at the speed of the constraint.
 
-Two frames. One says *delete before you fix*. The other says *fix the constraint, not the hot spots*. Isaac's insight: these aren't just operations philosophy — **they're exactly the two questions a code review tool should be asking, and nobody's tool was asking them**. Every code review tool ships a flood of style nits and low-signal warnings. None of them stops to ask whether the code should exist at all, and none of them distinguishes the one bottleneck from the ninety-nine hot spots.
+Two frames. One says *delete before you fix*. The other says *fix the constraint, not the hot spots*. Isaac's insight: these aren't just operations philosophy - **they're exactly the two questions a code review tool should be asking, and nobody's tool was asking them**. Every code review tool ships a flood of style nits and low-signal warnings. None of them stops to ask whether the code should exist at all, and none of them distinguishes the one bottleneck from the ninety-nine hot spots.
 
 "You should just build this," Isaac said. "Point it at a repo. Musk on one side, Goldratt on the other. See what falls out."
 
 ### The mess that made it urgent
 
-Ofer had been in the trenches for a week, shipping Social Amplifier — a Claude Code plugin that turns busy Base44 employees into LinkedIn thought leaders without making them write anything. The v3 bundle had gone live. The Apify Feeder App was pumping 35 posts per run into a shared Slack channel. Champions were getting voice-matched drafts delivered to their DMs three times a week.
+The call landed at exactly the right moment. A week in the trenches on a fast-moving project had left a familiar residue - not a catastrophic mess, a *lived-in* mess. Real problems solved in sequence, each fix leaving a little scar: renamed concepts where some filenames caught up and some didn't, scaffolds copied between modules that drifted apart, READMEs that ballooned because every new feature got a section appended, rendered artifacts committed next to lockfiles that shouldn't have been tracked either. The code worked. The repo didn't breathe.
 
-It worked. But the repo underneath it was a mess.
+Every builder knows that feeling. The point where you stop being able to see the shape of your own project because it's accumulated too much *stuff*.
 
-Not a catastrophic mess — a *lived-in* mess. Seven real install problems had been solved in order, each fix leaving a little scar: renamed concepts where some filenames caught up and some didn't, markdown scaffolds copied between skills that drifted apart, a README that ballooned to 601 lines because every new feature got a section appended to it, a 3.3 MB rendered video committed to git next to a pnpm-lock.yaml that shouldn't have been tracked either. The code worked. The repo didn't breathe.
+Isaac's two frames hit exactly that shape of problem. Not "write cleaner code next time" - *here's how to metabolize the mess you already have*.
 
-Every builder knows that feeling. The point where you stop being able to see the shape of your own project because it's accumulated too much *stuff*. Isaac's phone call hit at exactly the moment Ofer needed the frame.
+### Slash command, not a skill
 
-### The accidental ingredient
+The first real decision was format. An analyzer like this could have been packaged as an ambient "skill" - a capability that triggers when the assistant detects relevant intent in a conversation. Skills are powerful but fragile: when the trigger pattern is wrong (too narrow, too broad, too jargon-heavy) the skill never runs, and worse, nobody notices, because skills failing silently look identical to skills being unnecessary.
 
-Earlier that same day, someone had dropped a `.skill` file in Ofer's Downloads: `repo-flow-analyzer.skill`. A Claude Code skill someone had packaged up — the kind of prototype that gets passed around Anthropic's internal community but never quite lands. Decent bones, no home.
+A slash command is the opposite. You type `/`, pick from a menu, and the thing runs. No ambiguity. No "did it trigger?" There is a command, you ran it, it produced output. That model maps cleanly onto what a builder actually wants when they feel the mess closing in: **I want to run the thing. Right now. On this repo.**
 
-After Isaac's call, the pieces clicked together:
+And there's a deeper reason. Slash commands travel as single files. Drop a markdown file into `~/.claude/commands/` and it works. No marketplace, no installer, no dependency tree. You can DM it, gist it, email it. That property - **a dev tool that travels as a single file** - is exactly what a tool meant to reach a community needs to be.
 
-1. Don't install the analyzer as a skill. Skills are ambient — they trigger on intent, and when they don't trigger, they fail silently. **Install it as a slash command.** Explicit. On-demand. Type `/`, pick from a menu, run the thing.
-2. **User scope.** Not tied to any project. Available everywhere.
-3. **Name it after the framing.** Not "repo analyzer". Not "code review". `musk-algo`. Because the name itself is the instruction.
-
-Ofer typed the request: *"make it slash command user scope call it musk algo"*. Ten minutes later, `~/.claude/commands/musk-algo.md` existed.
+So: slash command. User scope. Available everywhere. Named after the framing, because the name itself is the instruction.
 
 ### The smoke test
 
 A tool you've never used is worthless until you run it once against something you know cold.
 
-Ofer pointed it at `~/Downloads/Social-Amplifier-agent-main` — the Claude Code plugin version of Social Amplifier, the predecessor to the Superagent bundle that had shipped earlier in the week. He'd been in every corner of that repo. If the tool hallucinated, he'd catch it. If the tool surfaced something real, he'd feel it.
+The first test was a repo the author had been in every corner of - the kind of repo where any hallucination would be immediately obvious and any real finding would land hard. The analyzer walked its three phases and produced a report that was, honestly, good. Not perfect. Good.
 
-The report was — good. Not perfect. Good.
+**The primary bottleneck it identified was the right one.** A single file approaching ~700 lines that held nine components, a theme layer, and animation hooks all inlined together. Every edit forced scrolling past unrelated sections. The tool's recommendation - split the file into scenes, components, and a theme module, then introduce a manifest pattern - was exactly what the author would have suggested themselves, sized honestly at thirty minutes.
 
-**The primary bottleneck it identified was exactly right.** `videos/install-demo/src/Demo.tsx`: a 658-line god file with 9 React components, all the theme constants, and the animation hooks inlined. Every edit forced scrolling past five scenes you weren't touching, and Remotion's studio re-evaluated the whole thing on every save. The tool's suggestion — split into `scenes/`, `components/`, `theme.ts`, then introduce a scene-manifest pattern — was the suggestion Ofer would have made himself, sized honestly at 30 minutes.
+**The Delete First section found three things that had slipped past conscious notice:**
 
-**The Delete First section found three things Ofer hadn't consciously noticed:**
+1. A rendered binary artifact committed to git when a build script already regenerated it.
+2. A runtime log file tracked in git that would grow forever.
+3. A test script whose filename still carried a concept that had been renamed across the rest of the repo in a recent commit. The rename was 95% complete; this file and its header comment were the stragglers.
 
-1. The rendered `install-demo.mp4` (3.3 MB) committed to git. The `build` script regenerates it. Classic binary-in-git, doubles clone size forever.
-2. A `cc10x-hook-events.log` file tracked in git from a different plugin's runtime. Would grow forever. Should have been gitignored from day one.
-3. A test script named `tests/validate-new-champion-skill.sh` — a leftover from when the core concept in the repo was called "champion". He'd renamed everything to "hero" in commits `c1abde0` and `bf7175d`. Everything except this filename, and the header comment inside the file, which both still said "champion". A half-finished rename.
-
-That last finding was the one that stung. Because Ofer had done the rename himself, and he'd been sure he'd gotten all of it. **The tool caught what his own eye had missed.** That's the moment you trust a tool — when it beats you at a thing you thought you'd finished.
+That last finding was the one that stung. The author had done the rename and had been certain they'd caught all of it. **The tool caught what their own eye had missed.** That's the moment you trust a tool - when it beats you at a thing you thought you'd finished.
 
 ### The three patches
 
-The smoke test also showed the tool's gaps. Three real weaknesses that Ofer spotted by eye but the analyzer hadn't codified:
+The smoke test also exposed three gaps - real weaknesses the author spotted by eye but the analyzer hadn't codified:
 
-- The Phase 1 grep scans were all JS/TS-focused, so on a prompt-heavy repo (95% markdown) they came back empty. A Claude Code plugin analyzer that skips `.md` is useless.
-- Tracked-artifact detection wasn't in the script. Ofer caught the binary and the log from Phase 0's "largest files" output, not from an explicit pass.
-- Rename-drift detection wasn't a pass either. He'd found it by eye.
+- The Phase 1 scans were all code-language-focused, so on a prompt-heavy repo (dominated by markdown) they came back empty. A modern repo analyzer that skips `.md` is useless for a whole category of project.
+- Tracked-artifact detection wasn't a dedicated pass. The author caught binaries and logs from general "largest files" output, not from explicit intent.
+- Rename-drift detection wasn't a pass either. They'd found it by eye.
 
-Three gaps, three patches:
+Three gaps, three patches, applied the same session:
 
-1. **Repo-type detection in Phase 0.** Runs a file-extension histogram. If `.md` dominates, the command announces it's switching to a content-audit lens and treats prompts as the "code".
-2. **Tracked-artifact scan.** `git ls-files | file` pass for binaries, plus a regex pass for logs, rendered output, caches. Feeds a mandatory sub-section in Delete First.
+1. **Repo-type detection in Phase 0.** Runs a file-extension histogram. If markdown dominates, the command announces it's switching to a content-audit lens and treats prompts as the "code".
+2. **Tracked-artifact scan.** A `git ls-files | file` pass for binaries, plus a regex pass for logs, rendered output, and caches. Feeds a mandatory sub-section in Delete First.
 3. **Rename-drift scan.** Greps `git log` for rename commits, then scans filenames and docs for the old term. Reported as a Complexity Red Flag, not a deletion, because rename drift is something you *fix*, not something you remove.
-
-All three patches shipped the same evening.
 
 ### The payoff, the same night
 
 The normal arc of "I built a dev tool for myself" ends at "I built a dev tool for myself". You use it once, twice, on the repo you built it for, and then it sits in `~/.claude/commands/` gathering dust.
 
-Ofer didn't do that. He took the report from the smoke test and he **acted on it**. That same evening:
+That's not what happened. The report got acted on that same evening. Two separate repos got cleanup commits citing the tool by name. Stale references scrubbed in one pass. Duplicate dependencies removed. A new linter added so the cleanup couldn't regress. The analyzer's name showed up in git history as the reason the work happened.
 
-- **Social-Amplifier-superagent** got commit `3ed3f39 chore(musk-algo week 1): scrub 14 stale references + add banned-terms lint`. Fourteen stale references surfaced by the analyzer, scrubbed in one pass. Plus a new banned-terms linter so the scrub couldn't regress.
-- **base44-marketing-plugin** got commit `d2bb58a chore: remove dead weight — duplicate fonts, obsolete HTML artifacts, tighten gitignore`. Different repo, same Musk lens. Fonts bundled twice because two skills had independently pulled them in. HTML artifacts left over from a landing page experiment that shipped months ago and was never cleaned up.
-
-Within hours of the analyzer's first run, two production repos were visibly cleaner. The commit messages cite the tool by name. That's the strongest signal a tool can give you — people *credit* it in git history. That's when you know it wasn't theater.
-
-### Why it went to the community
-
-Two things happened at once that pushed `/musk-algo` out the door.
-
-**First, the tool was good enough.** After the three patches, it had produced a real report on a real repo, surfaced real issues that generated real commits. That's the bar. Not perfection. Evidence of impact on something that wasn't a toy example.
-
-**Second, Isaac's framing deserved a larger audience than one builder at Base44.** The Claude Code community is full of builders who have their own accumulated messes, their own rename drifts, their own binary-in-git problems, their own god files they've been meaning to split up. A tool that gives them *permission to delete* — that frames cleanup work as a disciplined application of two well-known frameworks from two well-known thinkers — is a tool a community can rally around.
+**That's the signal.** When people cite a tool in commit messages, it isn't theater. It's a tool people are actually using to metabolize their mess.
 
 ### The deeper reason
 
-Every tool has a surface reason and a deeper reason. The surface reason for `/musk-algo` is: *Ofer had a messy repo and Isaac pointed out a frame.*
+Every tool has a surface reason and a deeper reason. The surface reason for `/musk-algo` is: *a friend pointed out a frame on a late-night phone call.*
 
 The deeper reason is this:
 
-**AI builders accumulate mess faster than they can feel it.** The loop between "I had an idea" and "it's shipping in production" has collapsed to hours. The loop between "this accumulated mess is a problem" and "I notice the accumulated mess" has not collapsed. It's still weeks. Sometimes months. And in the gap between those two timescales, every Claude Code project drifts into incoherence — not from bad intent, from good velocity. You fix seven problems in a week and each fix leaves a scar and by Friday you can't see your own project anymore.
+**AI builders accumulate mess faster than they can feel it.** The loop between "I had an idea" and "it's shipping in production" has collapsed to hours. The loop between "this accumulated mess is a problem" and "I notice the accumulated mess" has not collapsed. It's still weeks. Sometimes months. And in the gap between those two timescales, every fast-moving project drifts into incoherence - not from bad intent, from good velocity. You fix seven problems in a week and each fix leaves a scar and by Friday you can't see your own project anymore.
 
-The tools we have for this are either too heavy (code review meetings, architecture reviews, RFCs) or too light (lint warnings, prettier runs). What was missing was a **30-second interrupt** you can fire at a repo when you feel the mess closing in, that applies two well-known frames, produces a short actionable report, and — crucially — gives you permission to delete.
+The tools we have for this are either too heavy (code review meetings, architecture reviews, RFCs) or too light (lint warnings, prettier runs). What was missing was a **30-second interrupt** you can fire at a repo when you feel the mess closing in, that applies two well-known frames, produces a short actionable report, and - crucially - gives you permission to delete.
 
-The "permission to delete" part is the thing. Builders under velocity pressure hoard code. They hoard features, dependencies, files, abstractions, configs. Every line added has a sponsor; every line deleted has a critic. Musk's algorithm is famous not because the five steps are novel — they're not — but because it gives explicit, rehearsed permission to ask *should this exist at all?* Goldratt's Theory of Constraints does the same for effort allocation: it gives explicit permission to ignore 80% of what looks like a problem so you can fix the 20% that actually is.
+The "permission to delete" part is the thing. Builders under velocity pressure hoard code. They hoard features, dependencies, files, abstractions, configs. Every line added has a sponsor; every line deleted has a critic. Musk's algorithm is famous not because the five steps are novel - they're not - but because it gives explicit, rehearsed permission to ask *should this exist at all?* Goldratt's Theory of Constraints does the same for effort allocation: it gives explicit permission to ignore 80% of what looks like a problem so you can fix the 20% that actually is.
 
 Put those two permissions in a slash command. Ship it. Let the community use it. See what happens.
 
@@ -201,13 +182,13 @@ Yes. It handles JS/TS, Python, Go, Rust, Java, Ruby, and prompt-heavy markdown r
 Tuned for repos under ~5K files. Large monorepos will work but the bash scans get slow; for those, point it at a specific subdirectory.
 
 **Q: Will it analyze my monorepo's CI config, Docker, Makefile?**
-Yes — Phase 1 Step 4-5 covers build/CI/test signals and flags manual steps in READMEs that could be scripted.
+Yes - Phase 1 Step 4-5 covers build/CI/test signals and flags manual steps in READMEs that could be scripted.
 
 ---
 
 ## Contributing
 
-PRs welcome. Keep the prompt under 500 lines — the whole thing loads into context on every invocation. Structural improvements (new scan types, better bottleneck classification, language-specific detection) are higher value than wording tweaks.
+PRs welcome. Keep the prompt under 500 lines - the whole thing loads into context on every invocation. Structural improvements (new scan types, better bottleneck classification, language-specific detection) are higher value than wording tweaks.
 
 ---
 
@@ -222,5 +203,5 @@ MIT. See [LICENSE](LICENSE).
 - **Isaac Zeevi** - the idea. Late-night phone call at the climbing gym. The two frames (Musk + Goldratt) and the insight that they're the two questions a code review tool should be asking but isn't. This tool wouldn't exist without that call.
 - **Elon Musk's 5-Step Algorithm** - from the Starship factory tour with Tim Dodd (Everyday Astronaut).
 - **Eli Goldratt's Theory of Constraints** - *The Goal* (1984).
-- **Ofer Blutrich** - build, smoke test, patches, plugin packaging. Built April 14-15, 2026.
+- **Ofer Blutrich** - build, smoke test, patches, plugin packaging.
 - **Claude Opus 4.6 (1M context)** - paired engineering throughout.
