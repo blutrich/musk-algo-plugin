@@ -83,6 +83,12 @@ Every builder knows that feeling. The point where you stop being able to see the
 
 Isaac's two frames hit exactly that shape of problem. Not "write cleaner code next time" - *here's how to metabolize the mess you already have*.
 
+### The earlier prototype
+
+This wasn't the first attempt. Earlier that same day, the author had already taken a stab at the idea - packaged as a Claude Code skill, an ambient capability meant to trigger on intent. The bones were decent. The instincts were right. But it sat in the Downloads folder, unused, because it was packaged in the wrong shape. A skill has to wait to be invited. A tool you reach for when the mess is closing in needs to be on-demand, not ambient.
+
+Isaac's phone call reframed what to do with it. The analyzer logic was fine - the *packaging* was wrong. Take the guts of the earlier skill, throw away the skill wrapper, rebuild it as something a builder can actually *run* on demand. Different shape, same core. That's the move.
+
 ### Slash command, not a skill
 
 The first real decision was format. An analyzer like this could have been packaged as an ambient "skill" - a capability that triggers when the assistant detects relevant intent in a conversation. Skills are powerful but fragile: when the trigger pattern is wrong (too narrow, too broad, too jargon-heavy) the skill never runs, and worse, nobody notices, because skills failing silently look identical to skills being unnecessary.
