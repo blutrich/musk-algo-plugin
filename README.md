@@ -1,18 +1,94 @@
-# musk-algo
+<!--
+  ███╗   ███╗██╗   ██╗███████╗██╗  ██╗      █████╗ ██╗      ██████╗  ██████╗
+  ████╗ ████║██║   ██║██╔════╝██║ ██╔╝     ██╔══██╗██║     ██╔════╝ ██╔═══██╗
+  ██╔████╔██║██║   ██║███████╗█████╔╝█████╗███████║██║     ██║  ███╗██║   ██║
+  ██║╚██╔╝██║██║   ██║╚════██║██╔═██╗╚════╝██╔══██║██║     ██║   ██║██║   ██║
+  ██║ ╚═╝ ██║╚██████╔╝███████║██║  ██╗     ██║  ██║███████╗╚██████╔╝╚██████╔╝
+  ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝
+-->
 
-> A Claude Code slash command that applies **Elon Musk's 5-Step Algorithm** and **Eli Goldratt's Theory of Constraints** to any local repository - and gives you permission to delete.
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-orange)](https://docs.claude.com/en/docs/claude-code)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=200&section=header&text=musk-algo&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Delete%20before%20you%20fix&descAlignY=60&descSize=22" width="100%"/>
 
----
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=4000&pause=1000&color=4FC3F7&center=true&vCenter=true&multiline=true&repeat=false&width=760&height=80&lines=Musk%27s+5-step+algorithm+%2B+Goldratt%27s+Theory+of+Constraints;A+Claude+Code+slash+command+that+gives+you+permission+to+delete" alt="Typing" />
 
-## Install
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-FF6B35?style=for-the-badge&logo=anthropic&logoColor=white)](https://docs.claude.com/en/docs/claude-code)
+[![License: MIT](https://img.shields.io/badge/License-MIT-FFD700?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/blutrich/musk-algo-plugin?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117&color=4FC3F7)](https://github.com/blutrich/musk-algo-plugin/stargazers)
+[![Built with Claude](https://img.shields.io/badge/Built%20with-Claude%20Opus%204.6-8B5CF6?style=for-the-badge&logo=anthropic&logoColor=white)](https://www.anthropic.com/claude)
+
+</div>
+
+<br/>
+
+## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="30"> What it is
+
+<img align="right" width="280" src="https://raw.githubusercontent.com/abhisheknaiidu/abhisheknaiidu/master/code.gif" />
+
+```typescript
+const muskAlgo = {
+  command: "/musk-algo <repo-path>",
+  frames: [
+    "Musk's 5-step algorithm",
+    "Goldratt's Theory of Constraints"
+  ],
+  asks: [
+    "Should this code exist at all?",
+    "What's the one bottleneck?"
+  ],
+  output: {
+    deleteFirst: "binaries, logs, rename drift",
+    bottleneck: "the one file slowing everything",
+    roadmap: "Week 1 through Week 4",
+    tone: "direct, specific, no vague advice"
+  },
+  runs: "in 30 seconds",
+  permission: "to delete"
+};
+```
+
+<br clear="right"/>
+
+Point `/musk-algo` at any local repo. It runs a three-phase analysis — Musk on one side, Goldratt on the other — and produces a short, specific report you can act on the same afternoon.
+
+It's the tool you reach for when a project you love has accumulated too much *stuff* and you've lost the shape of it.
+
+<br/>
+
+## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Install
+
+<div align="center">
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🔌 Plugin marketplace
 
 ```
 /plugin marketplace add blutrich/musk-algo-plugin
 /plugin install musk-algo
 ```
+
+Recommended. You get updates when I push them.
+
+</td>
+<td width="50%" valign="top">
+
+### 📄 Drop-in file
+
+```bash
+mkdir -p ~/.claude/commands
+curl -L https://raw.githubusercontent.com/blutrich/musk-algo-plugin/main/plugins/musk-algo/commands/musk-algo.md \
+  -o ~/.claude/commands/musk-algo.md
+```
+
+One file. No dependencies. Works offline.
+
+</td>
+</tr>
+</table>
+</div>
 
 Then in any Claude Code session:
 
@@ -22,192 +98,302 @@ Then in any Claude Code session:
 
 Or just `/musk-algo` and it'll ask for the path.
 
-**Drop-in alternative** (no plugin system):
+<br/>
 
-```bash
-mkdir -p ~/.claude/commands
-curl -L https://raw.githubusercontent.com/blutrich/musk-algo-plugin/main/commands/musk-algo.md \
-  -o ~/.claude/commands/musk-algo.md
-```
+## <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="30"> The origin story
 
----
+<div align="center">
 
-## What it does
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,14&height=2&width=100%25" />
 
-Point `/musk-algo` at any repo path on your machine. It runs a three-phase analysis:
+</div>
 
-1. **Phase 0 - Intake.** Builds a mental model of the repo: type, languages, scale, activity, dominant file type. Detects prompt-heavy repos (Claude Code plugins, doc sites, skill libraries) and shifts to content-audit mode automatically.
+### A phone call from the climbing gym
 
-2. **Phase 1 - Musk's 5-Step Algorithm.** Asks "should this exist?" for every line:
-   - Requirements audit (find code that exists because of an assumption nobody questioned)
-   - Dead code and unused assets
-   - Tracked-artifact scan (binaries, logs, rendered output checked into git)
-   - Rename-drift scan (half-finished renames in filenames and docs)
-   - Over-engineering and complexity
-   - Acceleration and automation candidates
+The idea didn't come from a product meeting or a GitHub issue. It came from a late-night phone call at the climbing gym — my friend **Isaac Zeevi** on one end, me on the other. The kind of call you take in the corner of the gym between burns, chalk still on your hands, where someone says *"you know what would actually be useful..."* and the idea lands hard enough that you walk out to your car and start building it.
 
-3. **Phase 2 - Theory of Constraints.** Classifies the primary bottleneck (complexity, dependency, test, architecture, or dead-weight) and applies Goldratt's five focusing steps to it.
+Isaac had been carrying around two frames for a while and couldn't stop seeing how they applied to code:
 
-4. **Phase 3 - The Report.** You get:
-   - **Repo Overview** with a 1-10 health score
-   - **Primary Bottleneck** with both a quick win (exploit) and a proper fix (elevate)
-   - **Delete First** list with a "Tracked Artifacts" sub-section
-   - **Complexity Red Flags** with before/after code snippets
-   - **Specific Recommendations** ordered by impact
-   - **Week 1-4 Roadmap**
+<table>
+<tr>
+<td width="50%" valign="top" align="center">
 
-Every recommendation references specific files, line numbers, or function names. No vague advice.
+### 🚀 Musk's 5-Step Algorithm
+<sub>from the Starship factory tour with Tim Dodd</sub>
 
----
+1. Make the requirements less dumb
+2. **Delete the part**
+3. Simplify or optimize
+4. Accelerate cycle time
+5. Automate
 
-## The origin story
+*The most important step is #2. The second most important is #1. Every engineer skips straight to #3.*
 
-### The climbing gym phone call
+</td>
+<td width="50%" valign="top" align="center">
 
-The idea for `/musk-algo` didn't come from a product meeting or a GitHub issue. It came from a late-night phone call at the climbing gym, between two friends - **Isaac Zeevi** on one end, Ofer on the other. The kind of call you take in the corner of the gym between burns, chalk still on your hands, where someone says "you know what would actually be useful..." and the idea lands hard enough that you walk out to your car and start building it.
+### 🎯 Goldratt's Theory of Constraints
+<sub>from *The Goal* (1984)</sub>
 
-Isaac was the one who connected the dots. He'd been carrying around two frames for a while and couldn't stop seeing how they applied to code:
+1. **Identify** the constraint
+2. **Exploit** it
+3. **Subordinate** everything else to it
+4. **Elevate** it
+5. **Repeat**
 
-- **Elon Musk's 5-Step Algorithm** from the Starship factory tour with Tim Dodd. *Make the requirements less dumb. Delete the part. Simplify or optimize. Accelerate cycle time. Automate.* In that order. The most important step is step 2. The second most important is step 1. Every engineer skips straight to step 3.
-- **Eli Goldratt's Theory of Constraints** from *The Goal* (1984). Any system has exactly one bottleneck at a time. Any improvement anywhere else is an illusion - it looks like progress on a report, but the end-to-end system runs at the speed of the constraint.
+*Any system has exactly one bottleneck at a time. Any improvement anywhere else is an illusion.*
 
-Two frames. One says *delete before you fix*. The other says *fix the constraint, not the hot spots*. Isaac's insight: these aren't just operations philosophy - **they're exactly the two questions a code review tool should be asking, and nobody's tool was asking them**. Every code review tool ships a flood of style nits and low-signal warnings. None of them stops to ask whether the code should exist at all, and none of them distinguishes the one bottleneck from the ninety-nine hot spots.
+</td>
+</tr>
+</table>
 
-"You should just build this," Isaac said. "Point it at a repo. Musk on one side, Goldratt on the other. See what falls out."
+Two frames. One says **delete before you fix**. The other says **fix the constraint, not the hot spots**.
+
+Isaac's insight: these aren't just operations philosophy. **They're the two questions a code review tool should be asking, and nobody's tool was asking them.** Every code review tool ships a flood of style nits and low-signal warnings. None of them stops to ask whether the code should exist at all. None of them distinguishes the one bottleneck from the ninety-nine hot spots.
+
+> *"You should just build this,"* Isaac said. *"Point it at a repo. Musk on one side, Goldratt on the other. See what falls out."*
 
 ### The mess that made it urgent
 
-The call landed at exactly the right moment. A week in the trenches on a fast-moving project had left a familiar residue - not a catastrophic mess, a *lived-in* mess. Real problems solved in sequence, each fix leaving a little scar: renamed concepts where some filenames caught up and some didn't, scaffolds copied between modules that drifted apart, READMEs that ballooned because every new feature got a section appended, rendered artifacts committed next to lockfiles that shouldn't have been tracked either. The code worked. The repo didn't breathe.
+A week in the trenches on a fast-moving project had left a familiar residue — not a catastrophic mess, a *lived-in* mess. Real problems solved in sequence, each fix leaving a little scar. Renamed concepts where some filenames caught up and some didn't. Scaffolds copied between modules that drifted apart. READMEs that ballooned because every new feature got a section appended. Rendered artifacts committed next to lockfiles that shouldn't have been tracked either.
+
+The code worked. The repo didn't breathe.
 
 Every builder knows that feeling. The point where you stop being able to see the shape of your own project because it's accumulated too much *stuff*.
 
-Isaac's two frames hit exactly that shape of problem. Not "write cleaner code next time" - *here's how to metabolize the mess you already have*.
+Isaac's two frames hit exactly that shape of problem. Not "write cleaner code next time" — *here's how to metabolize the mess you already have*.
 
 ### The earlier prototype
 
-This wasn't the first attempt. Earlier that same day, the author had already taken a stab at the idea - built in **Claude.ai**, the web chat interface, and exported as a `.skill` file (that's how Claude.ai hands skills off to the outside world). The download landed in the usual Downloads folder and sat there, unused. The bones were decent. The instincts were right. But the shape was wrong: a skill has to wait to be invited, and a tool you reach for when the mess is closing in needs to be on-demand, not ambient.
+This wasn't the first attempt. Earlier that same day I'd already taken a stab at the idea — built in **Claude.ai**, the web chat interface, and exported as a `.skill` file (that's how Claude.ai hands skills off to the outside world). The download landed in my Downloads folder and sat there, unused. The bones were decent. The instincts were right. But the shape was wrong: a skill has to wait to be invited, and a tool you reach for when the mess is closing in needs to be on-demand, not ambient.
 
-Isaac's phone call reframed what to do with it. The analyzer logic was fine - the *packaging* was wrong. Take the guts of the earlier Claude.ai prototype, throw away the skill wrapper, rebuild it in Claude Code as a slash command the user can actually *run* on demand. Different shape, same core. That's the move.
-
-### Slash command, not a skill
-
-The first real decision was format. An analyzer like this could have been packaged as an ambient "skill" - a capability that triggers when the assistant detects relevant intent in a conversation. Skills are powerful but fragile: when the trigger pattern is wrong (too narrow, too broad, too jargon-heavy) the skill never runs, and worse, nobody notices, because skills failing silently look identical to skills being unnecessary.
-
-A slash command is the opposite. You type `/`, pick from a menu, and the thing runs. No ambiguity. No "did it trigger?" There is a command, you ran it, it produced output. That model maps cleanly onto what a builder actually wants when they feel the mess closing in: **I want to run the thing. Right now. On this repo.**
-
-And there's a deeper reason. Slash commands travel as single files. Drop a markdown file into `~/.claude/commands/` and it works. No marketplace, no installer, no dependency tree. You can DM it, gist it, email it. That property - **a dev tool that travels as a single file** - is exactly what a tool meant to reach a community needs to be.
-
-So: slash command. User scope. Available everywhere. Named after the framing, because the name itself is the instruction.
+Isaac's phone call reframed what to do with it. The analyzer logic was fine — the *packaging* was wrong. Take the guts of the Claude.ai prototype, throw away the skill wrapper, rebuild it in Claude Code as a slash command I could actually *run* on demand.
 
 ### The smoke test
 
 A tool you've never used is worthless until you run it once against something you know cold.
 
-The first test was a repo the author had been in every corner of - the kind of repo where any hallucination would be immediately obvious and any real finding would land hard. The analyzer walked its three phases and produced a report that was, honestly, good. Not perfect. Good.
+I pointed it at a repo I'd been in every corner of. If the tool hallucinated, I'd catch it. If the tool surfaced something real, I'd feel it.
 
-**The primary bottleneck it identified was the right one.** A single file approaching ~700 lines that held nine components, a theme layer, and animation hooks all inlined together. Every edit forced scrolling past unrelated sections. The tool's recommendation - split the file into scenes, components, and a theme module, then introduce a manifest pattern - was exactly what the author would have suggested themselves, sized honestly at thirty minutes.
+The report was — honestly — good. Not perfect. Good.
 
-**The Delete First section found three things that had slipped past conscious notice:**
+<table>
+<tr>
+<td>
 
-1. A rendered binary artifact committed to git when a build script already regenerated it.
-2. A runtime log file tracked in git that would grow forever.
-3. A test script whose filename still carried a concept that had been renamed across the rest of the repo in a recent commit. The rename was 95% complete; this file and its header comment were the stragglers.
+**🎯 The primary bottleneck it identified was the right one.**
 
-That last finding was the one that stung. The author had done the rename and had been certain they'd caught all of it. **The tool caught what their own eye had missed.** That's the moment you trust a tool - when it beats you at a thing you thought you'd finished.
+A single file approaching ~700 lines that held nine components, a theme layer, and animation hooks all inlined together. Every edit forced scrolling past unrelated sections. The tool's recommendation — split into scenes, components, and a theme module, then introduce a manifest pattern — was exactly what I would have suggested myself, sized honestly at 30 minutes.
 
-### The three patches
+</td>
+</tr>
+<tr>
+<td>
 
-The smoke test also exposed three gaps - real weaknesses the author spotted by eye but the analyzer hadn't codified:
+**🗑️ The Delete First section found three things I hadn't consciously noticed:**
 
-- The Phase 1 scans were all code-language-focused, so on a prompt-heavy repo (dominated by markdown) they came back empty. A modern repo analyzer that skips `.md` is useless for a whole category of project.
-- Tracked-artifact detection wasn't a dedicated pass. The author caught binaries and logs from general "largest files" output, not from explicit intent.
-- Rename-drift detection wasn't a pass either. They'd found it by eye.
+1. A rendered binary artifact committed to git when a build script already regenerated it
+2. A runtime log file tracked in git that would grow forever
+3. A test script whose filename still carried a concept I'd renamed across the rest of the repo in a recent commit — the rename was 95% complete, this file and its header comment were the stragglers
 
-Three gaps, three patches, applied the same session:
+That last finding was the one that stung. I'd done the rename myself and been certain I'd caught all of it. **The tool caught what my own eye had missed.** That's the moment you trust a tool — when it beats you at a thing you thought you'd finished.
 
-1. **Repo-type detection in Phase 0.** Runs a file-extension histogram. If markdown dominates, the command announces it's switching to a content-audit lens and treats prompts as the "code".
-2. **Tracked-artifact scan.** A `git ls-files | file` pass for binaries, plus a regex pass for logs, rendered output, and caches. Feeds a mandatory sub-section in Delete First.
-3. **Rename-drift scan.** Greps `git log` for rename commits, then scans filenames and docs for the old term. Reported as a Complexity Red Flag, not a deletion, because rename drift is something you *fix*, not something you remove.
+</td>
+</tr>
+</table>
 
 ### The payoff, the same night
 
-The normal arc of "I built a dev tool for myself" ends at "I built a dev tool for myself". You use it once, twice, on the repo you built it for, and then it sits in `~/.claude/commands/` gathering dust.
+The normal arc of *"I built a dev tool for myself"* ends at *"I built a dev tool for myself"*. You use it once, twice, on the repo you built it for, and then it sits in `~/.claude/commands/` gathering dust.
 
-That's not what happened. The report got acted on that same evening. Two separate repos got cleanup commits citing the tool by name. Stale references scrubbed in one pass. Duplicate dependencies removed. A new linter added so the cleanup couldn't regress. The analyzer's name showed up in git history as the reason the work happened.
+That's not what happened.
 
-**That's the signal.** When people cite a tool in commit messages, it isn't theater. It's a tool people are actually using to metabolize their mess.
+The report got acted on that same evening. **Two separate repos got cleanup commits citing the tool by name.** Stale references scrubbed in one pass. Duplicate dependencies removed. A new linter added so the cleanup couldn't regress.
 
-### The deeper reason
+The analyzer's name showed up in git history as the reason the work happened.
 
-Every tool has a surface reason and a deeper reason. The surface reason for `/musk-algo` is: *a friend pointed out a frame on a late-night phone call.*
+> **That's the signal.** When people cite a tool in commit messages, it isn't theater. It's a tool people are actually using to metabolize their mess.
 
-The deeper reason is this:
+<br/>
 
-**AI builders accumulate mess faster than they can feel it.** The loop between "I had an idea" and "it's shipping in production" has collapsed to hours. The loop between "this accumulated mess is a problem" and "I notice the accumulated mess" has not collapsed. It's still weeks. Sometimes months. And in the gap between those two timescales, every fast-moving project drifts into incoherence - not from bad intent, from good velocity. You fix seven problems in a week and each fix leaves a scar and by Friday you can't see your own project anymore.
+## <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="30"> What makes it different
 
-The tools we have for this are either too heavy (code review meetings, architecture reviews, RFCs) or too light (lint warnings, prettier runs). What was missing was a **30-second interrupt** you can fire at a repo when you feel the mess closing in, that applies two well-known frames, produces a short actionable report, and - crucially - gives you permission to delete.
+Most repo analyzers are LOC-based and miss two huge waste sources.
 
-The "permission to delete" part is the thing. Builders under velocity pressure hoard code. They hoard features, dependencies, files, abstractions, configs. Every line added has a sponsor; every line deleted has a critic. Musk's algorithm is famous not because the five steps are novel - they're not - but because it gives explicit, rehearsed permission to ask *should this exist at all?* Goldratt's Theory of Constraints does the same for effort allocation: it gives explicit permission to ignore 80% of what looks like a problem so you can fix the 20% that actually is.
+<table>
+<tr>
+<td width="33%" valign="top" align="center">
 
-Put those two permissions in a slash command. Ship it. Let the community use it. See what happens.
+### 📦 Tracked artifacts
 
----
+Binaries, rendered output, logs, caches committed to git.
 
-## What makes it different
+They bloat clones, pollute diffs, and rot fast. `musk-algo` runs `git ls-files | file` explicitly to catch them.
 
-Most repo analyzers are LOC-based and miss two huge waste sources:
+`Delete First` `git hygiene`
 
-1. **Tracked artifacts.** Binaries, rendered output, logs, caches committed to git. They bloat clones, pollute diffs, and rot fast. `musk-algo` runs `git ls-files | file` explicitly to catch these.
+</td>
+<td width="33%" valign="top" align="center">
 
-2. **Rename drift.** Filenames and docs that didn't get updated when a core concept was renamed. `musk-algo` greps `git log` for rename commits, then scans filenames for the old term.
+### 🔄 Rename drift
 
-It also handles **prompt-heavy repos** (Claude Code plugins, MCP servers, doc sites, skill libraries). Traditional scanners skip `.md` files; `musk-algo` treats prompts as the code when `.md` dominates.
+Filenames and docs that didn't get updated when a core concept was renamed.
 
----
+`musk-algo` greps `git log` for rename commits, then scans filenames for the old term.
 
-## Principles (built into the prompt)
+`Cognitive load` `Consistency`
 
-- **Never recommend adding complexity to fix complexity.** If a suggestion makes the codebase larger, it must be justified carefully.
-- **Every recommendation must reference specific files, line numbers, or function names.** No vague advice.
-- **The delete section comes before the fix section.** Always.
-- **Be direct.** If the architecture is bad, say so. The user came for honest analysis, not softened findings.
-- **Size effort honestly.** A "quick win" that takes 2 days is not a quick win.
-- **Read the files, don't just scan them.** For anything flagged as complex, open the file and think.
+</td>
+<td width="33%" valign="top" align="center">
 
----
+### 📝 Prompt-heavy repos
 
-## FAQ
+Claude Code plugins, MCP servers, doc sites, skill libraries.
 
-**Q: Does it run anything destructive?**
+Traditional scanners skip `.md` files. `musk-algo` treats prompts as the code when markdown dominates.
+
+`AI-native` `Content audit`
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+## <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="30"> The three phases
+
+```
+┌─────────────┐     ┌──────────────────┐     ┌────────────────┐     ┌──────────────┐
+│  Phase 0    │────▶│  Phase 1         │────▶│  Phase 2       │────▶│  Phase 3     │
+│  Intake     │     │  Musk's Algorithm│     │  Theory of     │     │  The Report  │
+│             │     │                  │     │  Constraints   │     │              │
+│ • Structure │     │ • Requirements   │     │ • Classify     │     │ • Overview   │
+│ • Languages │     │ • Dead code      │     │   bottleneck   │     │ • Bottleneck │
+│ • Scale     │     │ • Tracked        │     │ • 5 focusing   │     │ • Delete     │
+│ • Dominant  │     │   artifacts      │     │   steps        │     │ • Complexity │
+│   file type │     │ • Rename drift   │     │ • Identify →   │     │ • Roadmap    │
+│             │     │ • Complexity     │     │   Exploit →    │     │              │
+│             │     │ • Automation     │     │   Elevate      │     │              │
+└─────────────┘     └──────────────────┘     └────────────────┘     └──────────────┘
+```
+
+Every recommendation references specific files, line numbers, or function names. No vague advice.
+
+<br/>
+
+## <img src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif" width="30"> Principles built into the prompt
+
+<table>
+<tr>
+<td>
+
+🚫 **Never recommend adding complexity to fix complexity.** If a suggestion makes the codebase larger, it must be justified carefully.
+
+📍 **Every recommendation references specific files, line numbers, or function names.** No vague advice.
+
+🗑️ **The delete section comes before the fix section.** Always.
+
+🗣️ **Be direct.** If the architecture is bad, say so. The user came for honest analysis, not softened findings.
+
+⏱️ **Size effort honestly.** A "quick win" that takes 2 days is not a quick win.
+
+📖 **Read the files, don't just scan them.** For anything flagged as complex, open the file and think.
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+## <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="25"> FAQ
+
+<details>
+<summary><b>Does it run anything destructive?</b></summary>
+
 No. It only reads: `find`, `grep`, `wc`, `git ls-files`, `git log`, `file`, `du`. No writes, no deletes, no git mutations. You decide what to delete based on the report.
+</details>
 
-**Q: Does it work on non-JS/TS repos?**
+<details>
+<summary><b>Does it work on non-JS/TS repos?</b></summary>
+
 Yes. It handles JS/TS, Python, Go, Rust, Java, Ruby, and prompt-heavy markdown repos. Phase 0 detects the dominant file type and adjusts.
+</details>
 
-**Q: How big a repo can it handle?**
+<details>
+<summary><b>How big a repo can it handle?</b></summary>
+
 Tuned for repos under ~5K files. Large monorepos will work but the bash scans get slow; for those, point it at a specific subdirectory.
+</details>
 
-**Q: Will it analyze my monorepo's CI config, Docker, Makefile?**
-Yes - Phase 1 Step 4-5 covers build/CI/test signals and flags manual steps in READMEs that could be scripted.
+<details>
+<summary><b>Will it analyze my monorepo's CI config, Docker, Makefile?</b></summary>
 
----
+Yes — Phase 1 Step 4-5 covers build/CI/test signals and flags manual steps in READMEs that could be scripted.
+</details>
 
-## Contributing
+<details>
+<summary><b>Can I use this outside Claude Code?</b></summary>
 
-PRs welcome. Keep the prompt under 500 lines - the whole thing loads into context on every invocation. Structural improvements (new scan types, better bottleneck classification, language-specific detection) are higher value than wording tweaks.
+The command is a markdown file with bash snippets — the logic is portable. But the execution model (a single slash command that orchestrates multi-step analysis with file reads in between) is built for Claude Code. Anywhere else you'd have to reimplement the shell around it.
+</details>
 
----
+<br/>
 
-## License
+## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30"> Contributing
+
+PRs welcome. A few notes:
+
+- **Keep the prompt under 500 lines.** The whole thing loads into context on every invocation.
+- **Structural improvements beat wording tweaks.** New scan types, better bottleneck classification, language-specific detection — these are the high-value contributions.
+- **Smoke-test your changes on a real repo before opening a PR.** Include the repo (or a link to it) in the PR description.
+
+<br/>
+
+## <img src="https://media.giphy.com/media/ZDVePxWRhx0Fh7H9uA/giphy.gif" width="25"> License
 
 MIT. See [LICENSE](LICENSE).
 
----
+<br/>
 
-## Credits
+## <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="30"> Credits
 
-- **Isaac Zeevi** - the idea. Late-night phone call at the climbing gym. The two frames (Musk + Goldratt) and the insight that they're the two questions a code review tool should be asking but isn't. This tool wouldn't exist without that call.
-- **Elon Musk's 5-Step Algorithm** - from the Starship factory tour with Tim Dodd (Everyday Astronaut).
-- **Eli Goldratt's Theory of Constraints** - *The Goal* (1984).
-- **Ofer Blutrich** - build, smoke test, patches, plugin packaging.
-- **Claude Opus 4.6 (1M context)** - paired engineering throughout.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 👥 The humans
+
+**Isaac Zeevi** — the idea.
+Late-night phone call at the climbing gym. The two frames (Musk + Goldratt) and the insight that they're the two questions a code review tool should be asking but isn't. *This tool wouldn't exist without that call.*
+
+**[Ofer Blutrich](https://github.com/blutrich)** — build, smoke test, patches, plugin packaging.
+
+</td>
+<td width="50%" valign="top">
+
+### 📚 The frameworks
+
+**Elon Musk's 5-Step Algorithm**
+From the Starship factory tour with Tim Dodd (Everyday Astronaut).
+
+**Eli Goldratt's Theory of Constraints**
+*The Goal* (1984) — the book every builder should read at least once.
+
+**Claude Opus 4.6 (1M context)**
+Paired engineering throughout.
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=120&section=footer" width="100%"/>
+
+**Before you optimize it, ask whether it should exist at all.**
+
+<sub>Built in a single evening. Named after the framing, because the name is the instruction.</sub>
+
+</div>
